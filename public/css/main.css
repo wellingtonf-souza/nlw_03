@@ -1,0 +1,25 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh; /* ocupa toda a tela*/
+  color: white;
+  background: #ebf2f5;
+}
+
+:root {
+  font-size: 62.5%; /* 100% é 16px */
+}
+
+body,
+input,
+button,
+textarea {
+  font-size: 1.8rem; /* "rem" é em relacao ao root, "em" em relacao ao pai*/
+  line-height: 1;
+  font-weight: 400;
+  font-family: "Nunito", sans-serif;
+}
