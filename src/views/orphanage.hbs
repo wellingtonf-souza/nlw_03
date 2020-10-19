@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Orfanato | Happy</title>
+  <title>{{orphanage.name}} | Happy</title>
   <link rel="icon" href="/images/logo-icon.png" />
   <link rel="stylesheet" href="/css/main.css" />
   <link rel="stylesheet" href="/css/animation.css" />
@@ -37,36 +37,24 @@
       <div class="orphanage-details">
         <img src="/images/home.webp">
         <div class="images">
+          {{#each orphanage.images}}
           <button class="active" type="button" onclick="selectImage(event)">
-            <img src="/images/unsplash1.jpg">
+            <img src="{{this}}">
           </button>
-          <button type="button" onclick="selectImage(event)">
-            <img src="/images/unsplash2.jpg">
-          </button>
-          <button type="button" onclick="selectImage(event)">
-            <img src="/images/unsplash3.jpg">
-          </button>
-          <button type="button" onclick="selectImage(event)">
-            <img src="/images/unsplash4.jpg">
-          </button>
-          <button type="button" onclick="selectImage(event)">
-            <img src="/images/unsplash5.jpg">
-          </button>
-          <button type="button" onclick="selectImage(event)">
-            <img src="/images/unsplash6.jpg">
-          </button>
+          {{/each}}
         </div>
         <div class="orphanage-details-content">
-          <h1>Nossa Sra. Auxiliadora</h1>
+          <h1>{{orphanage.name}}</h1>
           <p>
-            Presta assistência a crianças em situação de risco e/ou vulnerabilidade social
+            {{orphanage.about}}
           </p>
           <div class="map-container">
-            <div id="mapid">
-
-            </div>
+            <div id="mapid"></div>
+            <span data-lat={{orphanage.lat}} data-lng="{{orphanage.lng}}"></span>
             <footer>
-              <a href="">Ver rotas no Google Maps</a>
+              <a target='_blank' href="https://maps.google.com/mobile?q={{orphanage.lat}},{{orphanage.lng}}&z=15">Ver
+                rotas no
+                Google Maps</a>
             </footer>
           </div>
 
@@ -74,22 +62,30 @@
 
           <h2>Instruções para visita</h2>
           <p>
-            Venha como se sentir a vontade e traga muito amor para doar
+            {{orphanage.instructions}}
           </p>
           <div class="open-details">
             <div class="hour">
               <img src="/images/clock.svg" alt="Horários">
-              Horário de visitas Das 8h até 18h
+              {{orphanage.opening_hours}}
             </div>
-            <div class="open-on-weekends">
+            {{#if orphanage.open_on_weekends}}
+            <div class="open-on-weekends open">
               <img src="/images/info.svg" alt="Informações">
               Atendemos fim de semana
             </div>
+            {{else}}
+            <div class="open-on-weekends closed">
+              <img src="/images/info-red.svg" alt="Informações">
+              Não atendemos fim de semana
+            </div>
+            {{/if}}
           </div>
-          <button type="button" class="primary-button">
+          <a href="https://api.whatsapp.com/send?l=pt_BR&phone={{orphanage.whatsapp}}" type="button"
+            class="primary-button" target="_blank">
             <img src="/images/whatsapp.svg" alt="whatsapp">
             Entrar em contato
-          </button>
+          </a>
         </div>
       </div>
     </main>
