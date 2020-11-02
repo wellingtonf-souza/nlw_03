@@ -10,7 +10,7 @@ Foi utilizado para desenvolver a aplicação as seguintes tecnologias:
 - CSS
 - JavaScript
 - Node
-- SQlite
+- SQLite
 
 ---
 
